@@ -645,27 +645,21 @@ main, header, footer { position: relative; z-index: 2; }
   position: relative;
   aspect-ratio: 1 / 1;
   background: #fff;
-  padding: 16px;
   border: 1px solid rgba(21,18,16,0.2);
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
+/* Absolute positioning gives Safari an explicit pixel-resolved box
+   (no `height: 100%` percentage chain through aspect-ratio), so the
+   img can't fall back to its intrinsic 480px source size on hover. */
 .qrcode {
-  width: 100%; height: 100%;
-  display: flex; align-items: center; justify-content: center;
+  position: absolute;
+  inset: 16px;
   overflow: hidden;
-  min-width: 0; min-height: 0;
 }
-/* Pin both dimensions — Safari otherwise re-evaluates `height: auto`
-   against the 480px source on hover transforms and visibly grows. */
 .qrcode img,
 .qrcode canvas {
   display: block;
-  width: 100% !important;
-  height: 100% !important;
-  max-width: 100%;
-  max-height: 100%;
+  width: 100%;
+  height: 100%;
   object-fit: contain;
 }
 
