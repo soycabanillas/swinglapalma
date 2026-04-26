@@ -652,7 +652,10 @@ main, header, footer { position: relative; z-index: 2; }
    img can't fall back to its intrinsic 480px source size on hover. */
 .qrcode {
   position: absolute;
-  inset: 16px;
+  inset: 16px;              /* visual margin around the QR (was .qr-frame padding) */
+  display: flex;            /* centers the qrcodejs-failed fallback message */
+  align-items: center;
+  justify-content: center;
   overflow: hidden;
 }
 .qrcode img,
