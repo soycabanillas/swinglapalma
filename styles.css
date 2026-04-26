@@ -690,7 +690,11 @@ main, header, footer { position: relative; z-index: 2; }
 .notify-card--qr.is-coming-soon .qrcode {
   filter: blur(7px) saturate(0.7);
   opacity: 0.55;
-  transition: filter var(--dur-base) var(--ease-glide);
+  /* Promote to its own compositor layer so the sticky header's
+     backdrop-filter and the fixed grain don't force re-rasterization
+     of the blurred region on every scroll frame (Android flicker). */
+  will-change: filter;
+  transform: translateZ(0);
 }
 .notify-card--qr.is-coming-soon .qr-soon-overlay { display: flex; }
 
