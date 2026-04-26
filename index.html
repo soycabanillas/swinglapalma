@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Swing La Palma — Lindy Hop y Balboa en La Palma</title>
+<meta name="description" content="Escuela de Lindy Hop y Balboa en la isla de La Palma. Sin experiencia previa, sin pareja necesaria."/>
+
+<!-- Open Graph -->
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="Swing La Palma"/>
+<meta property="og:title" content="Swing La Palma — Lindy Hop y Balboa en La Palma"/>
+<meta property="og:description" content="Clases de swing en La Palma. Sin pareja, sin experiencia, sin edad. Solo ganas de bailar."/>
+<meta property="og:url" content="https://swinglapalma.com"/>
+<!-- TODO: replace with real social preview image (1200x630 recommended) -->
+<meta property="og:image" content="https://swinglapalma.com/og-image.jpg"/>
+<meta property="og:locale" content="es_ES"/>
+<meta property="og:locale:alternate" content="en_US"/>
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Swing La Palma — Lindy Hop y Balboa en La Palma"/>
+<meta name="twitter:description" content="Clases de swing en La Palma. Sin pareja, sin experiencia, sin edad. Solo ganas de bailar."/>
+<!-- TODO: replace with real social preview image (1200x630 recommended) -->
+<meta name="twitter:image" content="https://swinglapalma.com/og-image.jpg"/>
+
+<!-- Favicon (burgundy "S" mark) -->
+<link rel="icon" type="image/svg+xml" href="favicon.svg"/>
+
+<!-- FOUC guard: apply theme + lang BEFORE first paint -->
+<script>
+(function(){
+  try {
+    var saved = localStorage.getItem('slp-theme');
+    var theme = saved || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', theme);
+    var savedLang = localStorage.getItem('slp-lang');
+    if (!savedLang) {
+      var nav = (navigator.language || 'es').toLowerCase();
+      savedLang = nav.indexOf('es') === 0 ? 'es' : (nav.indexOf('en') === 0 ? 'en' : 'es');
+    }
+    document.documentElement.setAttribute('lang', savedLang);
+  } catch (e) {}
+})();
+</script>
+
+<!-- Webfonts del design system -->
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Limelight&family=DM+Serif+Display:ital@0;1&family=Manrope:wght@300;400;500;600;700;800&family=Allura&display=swap" rel="stylesheet"/>
+
+<link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+
+<!-- ============== HEADER / NAV ============== -->
+<header class="site-header">
+  <div class="header-inner">
+    <a href="#top" class="brand" aria-label="Swing La Palma">
+      <span class="brand-display">SWING</span>
+      <span class="brand-script">la</span>
+      <span class="brand-display brand-display--sm">PALMA</span>
+    </a>
+    <div class="header-controls" role="group" aria-label="Preferencias">
+      <div class="lang-toggle" role="group" aria-label="Idioma">
+        <button type="button" class="lang-btn" data-lang="es" aria-pressed="true">ES</button>
+        <span class="lang-sep" aria-hidden="true">·</span>
+        <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+      <button type="button" id="themeToggle" class="theme-btn" aria-label="Cambiar tema">
+        <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 3v1.5M12 19.5V21M4.2 4.2l1.1 1.1M18.7 18.7l1.1 1.1M3 12h1.5M19.5 12H21M4.2 19.8l1.1-1.1M18.7 5.3l1.1-1.1"/></svg>
+        <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ============== HERO (PÓSTER ART DÉCO) ============== -->
+  <section class="hero" aria-labelledby="hero-title">
+    <svg class="hero-sunburst" preserveAspectRatio="none" viewBox="0 0 1600 900" aria-hidden="true">
+      <g stroke="currentColor" stroke-width="1" fill="none">
+        <g class="sunburst-rays"></g>
+      </g>
+      <circle cx="800" cy="450" r="260" stroke="currentColor" stroke-width="1" fill="none" opacity="0.4"/>
+      <circle cx="800" cy="450" r="340" stroke="currentColor" stroke-width="1" fill="none" opacity="0.25"/>
+    </svg>
+
+    <div class="hero-inner">
+      <div class="hero-eyebrow" aria-hidden="true">
+        <span class="rule rule--brass"></span>
+        <span class="eyebrow-text" data-i18n="heroEyebrow">Escuela de baile · La Palma · Canarias</span>
+        <span class="rule rule--brass"></span>
+      </div>
+
+      <h1 id="hero-title" class="hero-title">
+        <span class="hero-display">SWING</span>
+        <span class="hero-script">la</span>
+        <span class="hero-display hero-display--md">PALMA</span>
+      </h1>
+
+      <div class="hero-tagline" aria-hidden="true">
+        <span class="rule rule--ivory"></span>
+        <span class="tagline-text" data-i18n="heroTagline">Lindy Hop · Balboa</span>
+        <span class="rule rule--ivory"></span>
+      </div>
+
+      <p class="hero-lead" data-i18n="heroSubtitle">
+        Aprende a bailar en una isla que ya tiene swing. Clases de Lindy Hop y Balboa, sin experiencia previa y sin pareja necesaria.
+      </p>
+
+      <div class="hero-ctas">
+        <a class="btn btn--primary" href="#aviso" data-i18n="ctaPrimary">Avísame cuando empiece</a>
+        <a class="btn btn--ghost" href="#sobre" data-i18n="ctaSecondary">Conoce a los profes</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== INTRO / DESCRIPCIÓN ============== -->
+  <section class="section section--intro">
+    <div class="container container--narrow">
+      <p class="eyebrow" data-i18n="introEyebrow">Qué vas a bailar</p>
+      <h2 class="section-title" data-i18n="introTitle">Dos bailes. Una misma música.</h2>
+      <div class="intro-grid">
+        <article class="intro-col">
+          <h3 class="intro-col-title" data-i18n="lindyTitle">Lindy Hop</h3>
+          <p class="intro-col-text" data-i18n="lindyText">
+            Nacido en el Harlem de los años veinte y treinta, es el baile madre del swing: enérgico, improvisado y profundamente musical. Se baila en pareja, pero la pareja cambia toda la noche.
+          </p>
+        </article>
+        <div class="intro-divider" aria-hidden="true">
+          <svg viewBox="0 0 40 200" preserveAspectRatio="none"><line x1="20" y1="0" x2="20" y2="200" stroke="currentColor" stroke-width="1"/></svg>
+        </div>
+        <article class="intro-col">
+          <h3 class="intro-col-title" data-i18n="balboaTitle">Balboa</h3>
+          <p class="intro-col-text" data-i18n="balboaText">
+            Surgido en las salas abarrotadas de la California de los treinta, es elegante, cercano y rápido. Menos espacio, más conexión, mucha escucha. El baile de los tempos imposibles.
+          </p>
+        </article>
+      </div>
+    </div>
+
+    <div class="intro-deco" aria-hidden="true">
+      <img src="assets/couple-dancing.jpg" alt="" width="1100"/>
+    </div>
+  </section>
+
+  <!-- ============== SOBRE NOSOTROS ============== -->
+  <section class="section section--about" id="sobre">
+    <div class="container about-grid">
+      <div class="about-figure" aria-hidden="true">
+        <div class="about-figure-frame">
+          <img src="assets/teachers-portrait.jpg" alt=""/>
+        </div>
+      </div>
+      <div class="about-copy">
+        <p class="eyebrow" data-i18n="aboutEyebrow">Quiénes somos</p>
+        <h2 class="section-title" data-i18n="aboutTitle">Más de quince años en la pista.</h2>
+        <p class="lead" data-i18n="aboutP1">
+          Llevamos más de quince años bailando swing. Hemos dado y recibido talleres por toda Europa, competido en algún festival y pisado escenarios de vez en cuando — pero sobre todo hemos bailado social, noche tras noche.
+        </p>
+        <p class="lead" data-i18n="aboutP2">
+          Ahora traemos esa misma energía a La Palma: clases regulares, un espacio cálido para principiantes y un lugar donde los que ya bailan puedan seguir creciendo.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== AVISO / QR WHATSAPP + FACEBOOK ============== -->
+  <section class="section section--notify" id="aviso">
+    <div class="notify-poster">
+
+      <div class="notify-head">
+        <div class="notify-eyebrow" aria-hidden="true">
+          <span class="rule rule--brass-solid"></span>
+          <span data-i18n="notifyEyebrow">Aviso de inicio de curso</span>
+          <span class="rule rule--brass-solid"></span>
+        </div>
+        <h2 class="notify-title" data-i18n="notifyTitle">Te avisamos cuando empecemos.</h2>
+        <p class="notify-sub" data-i18n="notifySub">
+          Escanea el código con el móvil y recibirás un mensaje cuando abramos inscripciones. Nada más.
+        </p>
+      </div>
+
+      <div class="notify-grid">
+
+        <!-- QR CARD -->
+        <article class="notify-card notify-card--qr">
+          <div class="notify-card-head">
+            <span class="notify-card-kicker" data-i18n="qrKicker">WhatsApp</span>
+            <span class="notify-card-dots" aria-hidden="true">· · ·</span>
+          </div>
+          <div class="qr-frame">
+            <div id="qrcode" class="qrcode" aria-hidden="true"></div>
+            <div class="qr-corner qr-corner--tl" aria-hidden="true"></div>
+            <div class="qr-corner qr-corner--tr" aria-hidden="true"></div>
+            <div class="qr-corner qr-corner--bl" aria-hidden="true"></div>
+            <div class="qr-corner qr-corner--br" aria-hidden="true"></div>
+            <div class="qr-soon-overlay" aria-hidden="true">
+              <span class="qr-soon-badge" data-i18n="qrSoonBadge">Próximamente</span>
+            </div>
+          </div>
+          <p class="notify-card-note" data-i18n="qrNote">
+            Solo se usará para avisar del inicio de las clases. No lo usamos para comunicación general.
+          </p>
+          <a id="qrLink" href="#" class="notify-card-link" target="_blank" rel="noopener">
+            <span data-i18n="qrLinkFallback">¿No puedes escanear? Abrir WhatsApp</span>
+            <span aria-hidden="true">→</span>
+          </a>
+        </article>
+
+        <!-- FACEBOOK CARD -->
+        <article class="notify-card notify-card--fb">
+          <div class="notify-card-head">
+            <span class="notify-card-kicker" data-i18n="fbKicker">Facebook</span>
+            <span class="notify-card-dots" aria-hidden="true">· · ·</span>
+          </div>
+          <div class="fb-frame">
+            <svg viewBox="0 0 100 100" class="fb-mark" aria-hidden="true">
+              <rect x="4" y="4" width="92" height="92" fill="none" stroke="currentColor" stroke-width="1.5"/>
+              <rect x="10" y="10" width="80" height="80" fill="none" stroke="currentColor" stroke-width="0.8"/>
+              <text x="50" y="72" text-anchor="middle" font-family="Limelight, Playfair Display, serif" font-size="64" fill="currentColor">f</text>
+            </svg>
+          </div>
+          <p class="notify-card-note" data-i18n="fbNote">
+            También publicamos sociales, fiestas y cambios de horario en nuestra página.
+          </p>
+          <a href="https://facebook.com/swinglapalma" target="_blank" rel="noopener" class="notify-card-link">
+            <span data-i18n="fbLink">Síguenos en Facebook</span>
+            <span aria-hidden="true">→</span>
+          </a>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============== FOOTER ============== -->
+<footer class="site-footer" aria-labelledby="footer-title">
+  <div class="footer-inner">
+    <div class="footer-mark">
+      <span class="footer-display">SWING</span>
+      <span class="footer-script">la</span>
+      <span class="footer-display footer-display--sm">PALMA</span>
+    </div>
+    <p class="footer-line">
+      <span data-i18n="footerMade">Hecho en La Palma con paciencia y mucho swing</span>
+      <span class="footer-sep" aria-hidden="true">·</span>
+      <span id="footerYear">2026</span>
+    </p>
+    <p class="footer-meta sw-caption">
+      <span data-i18n="footerTag">Lindy Hop · Balboa · Canarias</span>
+    </p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
