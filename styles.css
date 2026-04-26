@@ -651,9 +651,23 @@ main, header, footer { position: relative; z-index: 2; }
   align-items: center;
   justify-content: center;
 }
-.qrcode { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
-.qrcode img { width: 100% !important; height: auto !important; }
-.qrcode canvas { width: 100% !important; height: auto !important; max-width: 100%; }
+.qrcode {
+  width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+  min-width: 0; min-height: 0;
+}
+/* Pin both dimensions — Safari otherwise re-evaluates `height: auto`
+   against the 480px source on hover transforms and visibly grows. */
+.qrcode img,
+.qrcode canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
 
 .qr-soon-overlay {
   position: absolute;
