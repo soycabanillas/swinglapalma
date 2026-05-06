@@ -671,39 +671,6 @@ main, header, footer { position: relative; z-index: 2; }
   object-fit: contain;
 }
 
-.qr-soon-overlay {
-  position: absolute;
-  inset: 0;
-  display: none;
-  align-items: center;
-  justify-content: center;
-  pointer-events: none;
-  z-index: 2;
-}
-.qr-soon-badge {
-  font-family: var(--font-display);
-  font-size: 14px;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-  color: var(--ivory);
-  background: var(--ember-500);
-  padding: 10px 16px;
-  border: 2px solid var(--ink);
-  box-shadow: 4px 4px 0 var(--ink);
-  transform: rotate(-4deg);
-}
-/* "Coming soon" treatment: desaturate + fade instead of `filter: blur()`.
-   CSS blur is re-rasterized by Android's compositor at quality boundaries
-   on every scroll frame, causing visible flicker that no amount of layer
-   promotion (will-change, translateZ, contain) reliably fixes on
-   lower-end devices. The badge carries the "not ready" signal — the
-   QR underneath only needs to read as a faded placeholder. */
-.notify-card--qr.is-coming-soon .qrcode {
-  filter: grayscale(1) contrast(0.7);
-  opacity: 0.28;
-}
-.notify-card--qr.is-coming-soon .qr-soon-overlay { display: flex; }
-
 .qr-corner {
   position: absolute;
   width: 18px;

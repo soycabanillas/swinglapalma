@@ -13,13 +13,7 @@
   // is configured server-side in the WhatsApp Business app — NOT here.
   // To change the greeting: WhatsApp Business → Settings → Business
   // tools → Short Link → Default message.
-  // Set WHATSAPP_READY = false to show the "Próximamente / Coming soon"
-  // placeholder state (blurred-out QR + Facebook fallback link).
-  var WHATSAPP_URL   = 'https://wa.me/message/N5YIEUWD64XEM1';
-  var WHATSAPP_READY = true;
-
-  var FACEBOOK_URL  = 'https://www.facebook.com/swinglapalma/';
-  var INSTAGRAM_URL = 'https://www.instagram.com/swinglapalma/';
+  var WHATSAPP_URL = 'https://wa.me/message/N5YIEUWD64XEM1';
 
   // ---- i18n ----------------------------------------------------
   var I18N = {
@@ -48,9 +42,6 @@
       qrKicker:      'WhatsApp',
       qrNote:        'Solo se usará para avisar del inicio de las clases. No lo usamos para comunicación general.',
       qrLinkFallback:'¿No puedes escanear? Abrir WhatsApp',
-      qrSoonBadge:   'Próximamente',
-      qrSoonNote:    'Estamos terminando de configurar el WhatsApp. Estará disponible en los próximos días — mientras tanto, escríbenos por Facebook.',
-      qrSoonLink:    'Avisarme por Facebook',
 
       footerMade:    'Hecho en La Palma con paciencia y mucho swing',
       footerTag:     'Lindy Hop · Balboa · Canarias',
@@ -83,9 +74,6 @@
       qrKicker:      'WhatsApp',
       qrNote:        'Used only to announce the start of classes. Not for general chat.',
       qrLinkFallback:'Can’t scan? Open WhatsApp',
-      qrSoonBadge:   'Coming soon',
-      qrSoonNote:    'We’re still setting up our WhatsApp. It will be live in the next few days — in the meantime, message us on Facebook.',
-      qrSoonLink:    'Message us on Facebook',
 
       footerMade:    'Made on La Palma with patience and a lot of swing',
       footerTag:     'Lindy Hop · Balboa · Canary Islands',
@@ -128,18 +116,6 @@
       if (dict[key] != null) el.textContent = dict[key];
     });
 
-    var qrNoteEl    = document.querySelector('.notify-card--qr .notify-card-note');
-    var qrLinkLabel = document.querySelector('#qrLink span[data-i18n="qrLinkFallback"], #qrLink span:first-child');
-    var qrBadgeEl   = document.querySelector('.notify-card--qr .qr-soon-badge');
-    if (!WHATSAPP_READY) {
-      if (qrNoteEl)    qrNoteEl.textContent    = dict.qrSoonNote || dict.qrNote;
-      if (qrLinkLabel) qrLinkLabel.textContent = dict.qrSoonLink || dict.qrLinkFallback;
-      if (qrBadgeEl)   qrBadgeEl.textContent   = dict.qrSoonBadge || '';
-    } else {
-      if (qrNoteEl)    qrNoteEl.textContent    = dict.qrNote;
-      if (qrLinkLabel) qrLinkLabel.textContent = dict.qrLinkFallback;
-    }
-
     $$('.lang-btn').forEach(function (btn) {
       var isActive = btn.getAttribute('data-lang') === lang;
       btn.setAttribute('aria-pressed', isActive ? 'true' : 'false');
@@ -173,12 +149,9 @@
   function renderQR() {
     var target = $('#qrcode');
     var link   = $('#qrLink');
-    var card   = document.querySelector('.notify-card--qr');
     if (!target) return;
-    var url = WHATSAPP_URL;
 
-    if (card) card.classList.toggle('is-coming-soon', !WHATSAPP_READY);
-    if (link) link.setAttribute('href', WHATSAPP_READY ? url : FACEBOOK_URL);
+    if (link) link.setAttribute('href', WHATSAPP_URL);
 
     target.innerHTML = '';
     if (typeof QRCode === 'undefined') {
@@ -191,7 +164,7 @@
     }
     /* eslint-disable no-new */
     new QRCode(target, {
-      text: url,
+      text: WHATSAPP_URL,
       width: 480,
       height: 480,
       colorDark:  '#151210',
@@ -245,13 +218,6 @@
 
     var yr = $('#footerYear');
     if (yr) yr.textContent = String(new Date().getFullYear());
-
-    $$('a[href*="facebook.com"]').forEach(function (a) {
-      a.setAttribute('href', FACEBOOK_URL);
-    });
-    $$('a[href*="instagram.com"]').forEach(function (a) {
-      a.setAttribute('href', INSTAGRAM_URL);
-    });
   }
 
   // ---- Init ----------------------------------------------------
