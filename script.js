@@ -26,7 +26,7 @@
     es: {
       heroEyebrow:   'Escuela de baile · La Palma · Canarias',
       heroTagline:   'Lindy Hop · Balboa',
-      heroSubtitle:  'Aprende a bailar en una isla que ya tiene swing. Clases de Lindy Hop y Balboa, sin experiencia previa y sin pareja necesaria.',
+      heroSubtitle:  'Aprende a bailar en una isla que ya tiene swing. Clases de Lindy Hop y Balboa, bailes en pareja, sin experiencia previa.',
       ctaPrimary:    'Avísame cuando empiece',
       ctaSecondary:  'Conoce a los profes',
 
@@ -61,7 +61,7 @@
     en: {
       heroEyebrow:   'Dance school · La Palma · Canary Islands',
       heroTagline:   'Lindy Hop · Balboa',
-      heroSubtitle:  'Learn to dance on an island that already swings. Lindy Hop & Balboa classes — beginners welcome, partners not required.',
+      heroSubtitle:  'Learn to dance on an island that already swings. Lindy Hop & Balboa classes — partner dances, beginners welcome.',
       ctaPrimary:    'Tell me when you start',
       ctaSecondary:  'Meet the teachers',
 
@@ -119,8 +119,8 @@
     var meta = document.querySelector('meta[name="description"]');
     if (meta) {
       meta.setAttribute('content', lang === 'es'
-        ? 'Escuela de Lindy Hop y Balboa en la isla de La Palma. Sin experiencia previa, sin pareja necesaria.'
-        : 'Lindy Hop & Balboa dance school on the island of La Palma. No experience, no partner required.');
+        ? 'Escuela de Lindy Hop y Balboa en la isla de La Palma. Bailes en pareja, sin experiencia previa.'
+        : 'Lindy Hop & Balboa dance school on the island of La Palma. Partner dances, no previous experience required.');
     }
 
     $$('[data-i18n]').forEach(function (el) {
