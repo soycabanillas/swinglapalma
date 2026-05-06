@@ -9,16 +9,17 @@
   'use strict';
 
   // ---- CONFIG --------------------------------------------------
-  // TODO: replace with the real WhatsApp number once the dedicated
-  // SIM is active. Format: international, no '+' / no spaces (ES = 34 + number).
-  // While WHATSAPP_READY is false, the QR renders blurred behind a
-  // "Próximamente / Coming soon" badge and the fallback link points to
-  // Facebook instead of wa.me. Flip to true to go live.
-  var WHATSAPP_NUMBER  = '34000000000';
-  var WHATSAPP_MESSAGE = 'Hola, quiero que me aviséis cuando empiecen las clases de Swing La Palma.';
-  var WHATSAPP_READY   = false;
+  // WhatsApp Business "Short Link". The pre-filled greeting message
+  // is configured server-side in the WhatsApp Business app — NOT here.
+  // To change the greeting: WhatsApp Business → Settings → Business
+  // tools → Short Link → Default message.
+  // Set WHATSAPP_READY = false to show the "Próximamente / Coming soon"
+  // placeholder state (blurred-out QR + Facebook fallback link).
+  var WHATSAPP_URL   = 'https://wa.me/message/N5YIEUWD64XEM1';
+  var WHATSAPP_READY = true;
 
-  var FACEBOOK_URL = 'https://www.facebook.com/swinglapalma/';
+  var FACEBOOK_URL  = 'https://www.facebook.com/swinglapalma/';
+  var INSTAGRAM_URL = 'https://www.instagram.com/swinglapalma/';
 
   // ---- i18n ----------------------------------------------------
   var I18N = {
@@ -53,6 +54,9 @@
       fbKicker:      'Facebook',
       fbNote:        'También publicamos sociales, fiestas y cambios de horario en nuestra página.',
       fbLink:        'Síguenos en Facebook',
+      igKicker:      'Instagram',
+      igNote:        'Fotos de las clases, sociales y eventos. Lo visual va aquí.',
+      igLink:        'Síguenos en Instagram',
 
       footerMade:    'Hecho en La Palma con paciencia y mucho swing',
       footerTag:     'Lindy Hop · Balboa · Canarias',
@@ -91,6 +95,9 @@
       fbKicker:      'Facebook',
       fbNote:        'We also post socials, parties and schedule changes on our Facebook page.',
       fbLink:        'Follow us on Facebook',
+      igKicker:      'Instagram',
+      igNote:        'Class photos, socials and events. The visual stuff lives here.',
+      igLink:        'Follow us on Instagram',
 
       footerMade:    'Made on La Palma with patience and a lot of swing',
       footerTag:     'Lindy Hop · Balboa · Canary Islands',
@@ -175,17 +182,12 @@
   }
 
   // ---- WhatsApp QR ---------------------------------------------
-  function buildWhatsappUrl() {
-    return 'https://wa.me/' + WHATSAPP_NUMBER +
-           '?text=' + encodeURIComponent(WHATSAPP_MESSAGE);
-  }
-
   function renderQR() {
     var target = $('#qrcode');
     var link   = $('#qrLink');
     var card   = document.querySelector('.notify-card--qr');
     if (!target) return;
-    var url = buildWhatsappUrl();
+    var url = WHATSAPP_URL;
 
     if (card) card.classList.toggle('is-coming-soon', !WHATSAPP_READY);
     if (link) link.setAttribute('href', WHATSAPP_READY ? url : FACEBOOK_URL);
@@ -258,6 +260,9 @@
 
     $$('a[href*="facebook.com"]').forEach(function (a) {
       a.setAttribute('href', FACEBOOK_URL);
+    });
+    $$('a[href*="instagram.com"]').forEach(function (a) {
+      a.setAttribute('href', INSTAGRAM_URL);
     });
   }
 

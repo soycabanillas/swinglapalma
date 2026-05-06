@@ -606,7 +606,7 @@ main, header, footer { position: relative; z-index: 2; }
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   gap: 28px;
 }
 
@@ -710,7 +710,8 @@ main, header, footer { position: relative; z-index: 2; }
 .qr-corner--bl { bottom: -2px; left: -2px;  border-right: 0; border-top: 0; }
 .qr-corner--br { bottom: -2px; right: -2px; border-left: 0;  border-top: 0; }
 
-.fb-frame {
+.fb-frame,
+.ig-frame {
   aspect-ratio: 1 / 1;
   background: var(--ivory-soft);
   padding: 24px;
@@ -720,7 +721,8 @@ main, header, footer { position: relative; z-index: 2; }
   justify-content: center;
   color: var(--ember-500);
 }
-.fb-mark { width: 80%; height: auto; }
+.fb-mark,
+.ig-mark { width: 80%; height: auto; }
 
 .notify-card-note {
   font-size: 0.92rem;
